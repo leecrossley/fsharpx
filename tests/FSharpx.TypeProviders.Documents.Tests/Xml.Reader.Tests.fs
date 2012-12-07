@@ -44,3 +44,9 @@ let ``Can get the title of the topics``() =
     let topics = topicDocument.Root.GetTopics() |> Seq.toList
     (topics.[0].GetTitles() |> Seq.head).Element.Value |> should equal "My Topic Title"
     (topics.[1].GetTitles() |> Seq.head).Element.Value |> should equal "Another Topic Title"
+
+[<Test>]
+let ``Simple title elements can be accessed as attributes``() = 
+    let topics = topicDocument.Root.GetTopics() |> Seq.toList
+    topics.[0].Title |> should equal "My Topic Title"
+    topics.[1].Title |> should equal "Another Topic Title"
